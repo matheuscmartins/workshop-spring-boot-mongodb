@@ -39,17 +39,25 @@ public class UserResource {
         return ResponseEntity.ok().body(new UserDTO(user));
     }
 
-    @RequestMapping( method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) {
         User user = userService.fromDTO(objDto);
         user = userService.insert(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable String id) {
         userService.delete(id);
         return ResponseEntity.noContent().build(); //neste caso retorna codigo 404 noContent
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
+        User user = userService.fromDTO(objDto);
+        user.setId(id);
+        user = userService.update(user);
+        return ResponseEntity.noContent().build(); //neste caso retorna codigo 404 noContent
+    }
 }

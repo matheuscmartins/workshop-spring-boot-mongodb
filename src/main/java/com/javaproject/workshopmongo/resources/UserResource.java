@@ -5,6 +5,7 @@ import com.javaproject.workshopmongo.dto.UserDTO;
 import com.javaproject.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,11 +23,18 @@ public class UserResource {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> findAll(){
+    public ResponseEntity<List<UserDTO>> findAll() {
         List<User> list = userService.findAll();
         List<UserDTO> dtoList = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
         //transforma uma List<User> em List<UserDTO> com expressao lambda
 
-        return  ResponseEntity.ok().body(dtoList);
+        return ResponseEntity.ok().body(dtoList);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDTO> findById(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(new UserDTO(user));
+    }
+
 }

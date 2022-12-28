@@ -1,5 +1,6 @@
 package com.javaproject.workshopmongo.resources;
 
+import com.javaproject.workshopmongo.domain.Post;
 import com.javaproject.workshopmongo.domain.User;
 import com.javaproject.workshopmongo.dto.UserDTO;
 import com.javaproject.workshopmongo.repository.UserRepository;
@@ -59,5 +60,10 @@ public class UserResource {
         user.setId(id);
         user = userService.update(user);
         return ResponseEntity.noContent().build(); //neste caso retorna codigo 404 noContent
+    }
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPostList());
     }
 }

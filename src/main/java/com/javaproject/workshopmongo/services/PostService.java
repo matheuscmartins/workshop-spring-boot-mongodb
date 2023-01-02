@@ -22,7 +22,7 @@ public class PostService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not Found by Id: " + id));
     }
     public List<Post> findByTitle(String text){
-        return postRepository.findByTitleContainingIgnoreCase(text);
+        return postRepository.searchTitle(text);
     }
 
 

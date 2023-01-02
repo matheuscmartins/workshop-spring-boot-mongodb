@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "b208af72-17d2-4bce-8242-49c06a74ccc0",
+		"name": "WorkShopMongoDb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24459907"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET Find All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Find User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/63ac6e34260ac17533f5c15b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ac6e34260ac17533f5c15b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Insert User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Jose Red\",\r\n    \"email\" : \"jose@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Update User By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Freddy Black\",\r\n    \"email\" : \"freddy@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/63ac79718b0e281e50311afa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ac79718b0e281e50311afa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Delete User By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Jose Red\",\r\n    \"email\" : \"jose@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/63ac79718b0e281e50311afa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ac79718b0e281e50311afa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "GET Find Posts By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/63ac908141f9b27224e9b618/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ac908141f9b27224e9b618",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Find Posts By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/posts/63ac908241f9b27224e9b61b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"63ac908241f9b27224e9b61b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Find Posts By Title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/posts/titlesearch?text=Bom%20dia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"titlesearch"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "Bom%20dia"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Find Posts By Full Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/posts/fullsearch?text=a&minDate=2022-03-21&maxDate=2022-03-22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"fullsearch"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "a"
+								},
+								{
+									"key": "minDate",
+									"value": "2022-03-21"
+								},
+								{
+									"key": "maxDate",
+									"value": "2022-03-22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
